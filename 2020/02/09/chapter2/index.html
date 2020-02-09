@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>chapter2 · 我进的球都是侥幸，打的铁才是人生</title>
+    <title>C++primer 5th chapter2 练习题 · 我进的球都是侥幸，打的铁才是人生</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/" >美如画的杂货铺.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">chapter2</a>
+                <a href="#" class="post-name">C++primer 5th chapter2 练习题</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            chapter2
+            C++primer 5th chapter2 练习题
             <!-- 404 -->
             
         </h1>
@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">0</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                        <span>Word count: <span class="post-count word-count">1.3k</span>Reading time: <span class="post-count reading-time">5 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -401,7 +401,86 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        
+        <p>chapter2的练习题</p>
+<h3 id="2-1"><a href="#2-1" class="headerlink" title="2.1"></a>2.1</h3><p>int、long、long long、short的区别，signed与unsigned区别，float和double区别</p>
+<p>short 和int最少16位，long至少32位，long long至少64位；</p>
+<p>signed可以表示负数，unsigned只能表示0与正数；</p>
+<p>float表示单精度浮点数，有6位有效数字，double表示双精度浮点数，有10位有效数字</p>
+<h3 id="2-2"><a href="#2-2" class="headerlink" title="2.2"></a>2.2</h3><p>按揭贷款时，对于利率 本金 付款分别选择何种数据类型？</p>
+<p>double或者float</p>
+<h3 id="2-3"><a href="#2-3" class="headerlink" title="2.3"></a>2.3</h3><p>写出程序的结果</p>
+<p>32 ***** 32 -32 0 0  其中第二个结果越界</p>
+<h3 id="2-5"><a href="#2-5" class="headerlink" title="2.5"></a>2.5</h3><p>指出字面值的数据类型并说明区别</p>
+<p>(a) 字符型 宽字符型 字符串类型 宽字符串类型</p>
+<p>(b) 整型 无符号整型 长整型 无符号长整型 十六进制</p>
+<p>(c) 双精度 浮点数 长双精度</p>
+<p>(d) 整型 无符号整型 双精度 双精度</p>
+<h3 id="2-6"><a href="#2-6" class="headerlink" title="2.6"></a>2.6</h3><p>第一组数是十进制，第二组中number1无效，因为八进制没有9，number2有效</p>
+<h3 id="2-7"><a href="#2-7" class="headerlink" title="2.7"></a>2.7</h3><p>类型分别为字符串，长双精度，浮点数，长双精度</p>
+<h3 id="2-8"><a href="#2-8" class="headerlink" title="2.8"></a>2.8</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"\062\115\012"</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"\062\t\115\012"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-9"><a href="#2-9" class="headerlink" title="2.9"></a>2.9</h3><p>(a) 错误，声明不能放在输入语句中</p>
+<p>(b) 错误，没有类型转换，丢失信息</p>
+<p>(c) 如果wage之前定义了那就是正确，否则错误</p>
+<p>(d) 正确，但是会丢失部分信息</p>
+<h3 id="2-10"><a href="#2-10" class="headerlink" title="2.10"></a>2.10</h3><p>global_str 全局变量 初始化为空字符串；global_int 全局变量 初始化为0；</p>
+<p>local_str 局部变量 初始化为空字符串；local_int 局部变量 没有定义的初始化值；注意两者不同</p>
+<h3 id="2-11"><a href="#2-11" class="headerlink" title="2.11"></a>2.11</h3><p>定义 定义 声明</p>
+<h3 id="2-12"><a href="#2-12" class="headerlink" title="2.12"></a>2.12</h3><p>a c d无效</p>
+<h3 id="2-13"><a href="#2-13" class="headerlink" title="2.13"></a>2.13</h3><p>程序的值：j为100</p>
+<h3 id="2-14"><a href="#2-14" class="headerlink" title="2.14"></a>2.14</h3><p>合法，100 50</p>
+<h3 id="2-15"><a href="#2-15" class="headerlink" title="2.15"></a>2.15</h3><p>下面的哪个定义是不合法的：</p>
+<p>b 初始化必须是一个对象，d 引用必须首先被定义</p>
+<h3 id="2-16"><a href="#2-16" class="headerlink" title="2.16"></a>2.16</h3><p>均合法，a赋值，b会自动转换，c自动转换但是丢失信息，d自动转换但是丢失信息</p>
+<h3 id="2-17"><a href="#2-17" class="headerlink" title="2.17"></a>2.17</h3><p>输出：10 10</p>
+<h3 id="2-18"><a href="#2-18" class="headerlink" title="2.18"></a>2.18</h3><p>编写程序改变指针的值以及指针所指对象的值</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a=<span class="number">1</span>,b=<span class="number">2</span>;</span><br><span class="line"><span class="keyword">int</span> *p1=&amp;a,*p2=b;</span><br><span class="line"><span class="comment">//修改指针的值；</span></span><br><span class="line">p1=&amp;b;</span><br><span class="line"><span class="comment">//修改指针所指对象的值</span></span><br><span class="line">*p2=a;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-19"><a href="#2-19" class="headerlink" title="2.19"></a>2.19</h3><p>指针与引用的区别</p>
+<p>指针的值是对象的地址，引用时对象的另一个名字</p>
+<h3 id="2-20"><a href="#2-20" class="headerlink" title="2.20"></a>2.20</h3><p>叙述代码的作用</p>
+<p>对i定义及赋值，定义指针p1，对p1指向的值重新赋值</p>
+<h3 id="2-21"><a href="#2-21" class="headerlink" title="2.21"></a>2.21</h3><p>判断以下定义是否合法</p>
+<p>非法 非法 合法</p>
+<h3 id="2-22"><a href="#2-22" class="headerlink" title="2.22"></a>2.22</h3><p>判断p是否是一个空指针；</p>
+<p>判断p是否指向一个0值</p>
+<h3 id="2-23"><a href="#2-23" class="headerlink" title="2.23"></a>2.23</h3><p>不能，需要更多信息来判断指针是否有效</p>
+<h3 id="2-24"><a href="#2-24" class="headerlink" title="2.24"></a>2.24</h3><p>因为*void可以保存任何类型的地址</p>
+<h3 id="2-25"><a href="#2-25" class="headerlink" title="2.25"></a>2.25</h3><p>说明变量的类型和值</p>
+<p>ip是指向整型数据的指针，i是整型值，r是i的引用；</p>
+<p>i是整型值，ip是空指针</p>
+<p>ip是指向整型数据的指针，ip2是整型值</p>
+<h3 id="2-26"><a href="#2-26" class="headerlink" title="2.26"></a>2.26</h3><p>判断是否合法</p>
+<p>第一个不合法，因为没有初始化const类型值；</p>
+<p>++sz不合法，因为不能对const类型值做修改</p>
+<h3 id="2-27"><a href="#2-27" class="headerlink" title="2.27"></a>2.27</h3><p>a不合法，引用的必须是对象；f不合法，引用不可以是const类型</p>
+<h3 id="2-28"><a href="#2-28" class="headerlink" title="2.28"></a>2.28</h3><p>前四均不合法，因为const类型值需要初始化</p>
+<h3 id="2-29"><a href="#2-29" class="headerlink" title="2.29"></a>2.29</h3><p>合法 其余不合法</p>
+<h3 id="2-30"><a href="#2-30" class="headerlink" title="2.30"></a>2.30</h3><p> 判断顶层底层const</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> v2 = <span class="number">0</span>; <span class="keyword">int</span> v1 = v2;<span class="comment">//v2顶层</span></span><br><span class="line"><span class="keyword">int</span> *p1 = &amp;v1, &amp;r1 = v1;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> *p2 = &amp;v2, *<span class="keyword">const</span> p3 = &amp;i, &amp;r2 = v2;<span class="comment">//p2底层，p3最左边的是底层，最右边的顶层，r2是底层</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-31"><a href="#2-31" class="headerlink" title="2.31"></a>2.31</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//根据上一题的程序判断</span></span><br><span class="line">r1 = v2; <span class="comment">// legal, top-level const in v2 is ignored.</span></span><br><span class="line">p1 = p2; <span class="comment">// illegal, p2 has a low-level const but p1 doesn't.</span></span><br><span class="line">p2 = p1; <span class="comment">// legal, we can convert int* to const int*.</span></span><br><span class="line">p1 = p3; <span class="comment">// illegal, p3 has a low-level const but p1 doesn't.</span></span><br><span class="line">p2 = p3; <span class="comment">// legal, p2 has the same low-level const qualification as p3.</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-32"><a href="#2-32" class="headerlink" title="2.32"></a>2.32</h3><p>修改：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> null = <span class="number">0</span>, *p = <span class="literal">nullptr</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-33"><a href="#2-33" class="headerlink" title="2.33"></a>2.33</h3><p>判断语句的运行结果</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a=<span class="number">42</span>;<span class="comment">//正确a是一个整数，同样b c也正确</span></span><br><span class="line">d=<span class="number">42</span>;<span class="comment">//d是一个整型指针，即指向整数的指针。应该修改为*d=42;</span></span><br><span class="line">e=<span class="number">42</span>;<span class="comment">//e是一个指向整数常量的指针，改为e=&amp;c;</span></span><br><span class="line">g=<span class="number">42</span>;<span class="comment">//g是一个整型常量引用</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-35"><a href="#2-35" class="headerlink" title="2.35"></a>2.35</h3><p>判断类型</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> i = <span class="number">42</span>;<span class="comment">//i是const int</span></span><br><span class="line"><span class="keyword">auto</span> j = i;<span class="comment">//j是int</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">auto</span> &amp;k = i;<span class="comment">//k是const int &amp;</span></span><br><span class="line"><span class="keyword">auto</span> *p = &amp;i;<span class="comment">//p是int*</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">auto</span> j2 = i, &amp;k2 = i;<span class="comment">//j2是const int, k2是const int &amp;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-36"><a href="#2-36" class="headerlink" title="2.36"></a>2.36</h3><p>c是int型，d是a的引用。结束后均为4</p>
+<h3 id="2-37"><a href="#2-37" class="headerlink" title="2.37"></a>2.37</h3><p>c是int型，d是int&amp;型，四个值分别为3 4 3 3</p>
+<h3 id="2-38"><a href="#2-38" class="headerlink" title="2.38"></a>2.38</h3><p>decltype是通过给定的表达式判断对象的类型</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">0</span>, &amp;r = i;</span><br><span class="line"><span class="comment">// same</span></span><br><span class="line"><span class="keyword">auto</span> a = i;</span><br><span class="line"><span class="keyword">decltype</span>(i) b = i;</span><br><span class="line"><span class="comment">// different</span></span><br><span class="line"><span class="keyword">auto</span> c = r;</span><br><span class="line"><span class="keyword">decltype</span>(r) d = r;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-39"><a href="#2-39" class="headerlink" title="2.39"></a>2.39</h3><p>返回应输入分号的错误</p>
+<h3 id="2-40"><a href="#2-40" class="headerlink" title="2.40"></a>2.40</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Sales_data</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> num;</span><br><span class="line">	<span class="keyword">double</span> price;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">string</span> name;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">string</span> province;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-41"><a href="#2-41" class="headerlink" title="2.41"></a>2.41</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="comment">//#include"Sales_item.h"</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Sales_data</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">string</span> bookNo;</span><br><span class="line">	<span class="keyword">unsigned</span> units_sold=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">double</span> revenue = <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Sales_data item;</span><br><span class="line">	<span class="keyword">double</span> price = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; item.bookNo&gt;&gt;item.units_sold&gt;&gt;price;</span><br><span class="line">	item.revenue = item.units_sold*price;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; item.bookNo &lt;&lt; <span class="string">" "</span> &lt;&lt; item.units_sold &lt;&lt; <span class="string">" "</span> &lt;&lt; item.revenue &lt;&lt; <span class="string">" "</span> &lt;&lt; price;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
     </article>
     <!-- license  -->
     
@@ -409,7 +488,7 @@ height:50vh;
             <p>Author：<a href="http://yoursite.com">John Doe</a>
             <p>原文链接：<a href="http://yoursite.com/2020/02/09/chapter2/">http://yoursite.com/2020/02/09/chapter2/</a>
             <p>发表日期：<a href="http://yoursite.com/2020/02/09/chapter2/">February 9th 2020, 8:39:27 pm</a>
-            <p>更新日期：<a href="http://yoursite.com/2020/02/09/chapter2/">February 9th 2020, 8:44:21 pm</a>
+            <p>更新日期：<a href="http://yoursite.com/2020/02/09/chapter2/">February 9th 2020, 9:01:00 pm</a>
             <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -541,7 +620,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1"><span class="toc-number">1.</span> <span class="toc-text">2.1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2"><span class="toc-number">2.</span> <span class="toc-text">2.2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3"><span class="toc-number">3.</span> <span class="toc-text">2.3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5"><span class="toc-number">4.</span> <span class="toc-text">2.5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6"><span class="toc-number">5.</span> <span class="toc-text">2.6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7"><span class="toc-number">6.</span> <span class="toc-text">2.7</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8"><span class="toc-number">7.</span> <span class="toc-text">2.8</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-9"><span class="toc-number">8.</span> <span class="toc-text">2.9</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-10"><span class="toc-number">9.</span> <span class="toc-text">2.10</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-11"><span class="toc-number">10.</span> <span class="toc-text">2.11</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-12"><span class="toc-number">11.</span> <span class="toc-text">2.12</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-13"><span class="toc-number">12.</span> <span class="toc-text">2.13</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-14"><span class="toc-number">13.</span> <span class="toc-text">2.14</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-15"><span class="toc-number">14.</span> <span class="toc-text">2.15</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-16"><span class="toc-number">15.</span> <span class="toc-text">2.16</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-17"><span class="toc-number">16.</span> <span class="toc-text">2.17</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-18"><span class="toc-number">17.</span> <span class="toc-text">2.18</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-19"><span class="toc-number">18.</span> <span class="toc-text">2.19</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-20"><span class="toc-number">19.</span> <span class="toc-text">2.20</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-21"><span class="toc-number">20.</span> <span class="toc-text">2.21</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-22"><span class="toc-number">21.</span> <span class="toc-text">2.22</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-23"><span class="toc-number">22.</span> <span class="toc-text">2.23</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-24"><span class="toc-number">23.</span> <span class="toc-text">2.24</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-25"><span class="toc-number">24.</span> <span class="toc-text">2.25</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-26"><span class="toc-number">25.</span> <span class="toc-text">2.26</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-27"><span class="toc-number">26.</span> <span class="toc-text">2.27</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-28"><span class="toc-number">27.</span> <span class="toc-text">2.28</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-29"><span class="toc-number">28.</span> <span class="toc-text">2.29</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-30"><span class="toc-number">29.</span> <span class="toc-text">2.30</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-31"><span class="toc-number">30.</span> <span class="toc-text">2.31</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-32"><span class="toc-number">31.</span> <span class="toc-text">2.32</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-33"><span class="toc-number">32.</span> <span class="toc-text">2.33</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-35"><span class="toc-number">33.</span> <span class="toc-text">2.35</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-36"><span class="toc-number">34.</span> <span class="toc-text">2.36</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-37"><span class="toc-number">35.</span> <span class="toc-text">2.37</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-38"><span class="toc-number">36.</span> <span class="toc-text">2.38</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-39"><span class="toc-number">37.</span> <span class="toc-text">2.39</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-40"><span class="toc-number">38.</span> <span class="toc-text">2.40</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-41"><span class="toc-number">39.</span> <span class="toc-text">2.41</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -599,7 +678,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2020/02/09/chapter2/" >chapter2</a>
+            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2020/02/09/chapter2/" >C++primer 5th chapter2 练习题</a>
         </li>
     
     
