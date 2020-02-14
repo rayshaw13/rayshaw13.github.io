@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="John Doe">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="John Doe">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>chapter4 · 我进的球都是侥幸，打的铁才是人生</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/favicon.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >美如画的杂货铺.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">chapter4</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>美如画的杂货铺.</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            chapter4
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "C++">C++</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">2.4k</span>Reading time: <span class="post-count reading-time">11 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/02/14</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h3 id="4-1"><a href="#4-1" class="headerlink" title="4.1"></a>4.1</h3><p>表达式的值为105，主要考察运算符优先级</p>
+<h3 id="4-2"><a href="#4-2" class="headerlink" title="4.2"></a>4.2</h3><p>根据4.12的表，在表达式的合理位置添加括号，使其与添加括号前一致</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//原</span></span><br><span class="line">*vec.<span class="built_in">begin</span>();</span><br><span class="line">*vec.<span class="built_in">begin</span>()+<span class="number">1</span>;</span><br><span class="line"><span class="comment">//添加括号</span></span><br><span class="line">*(vec.<span class="built_in">begin</span>());</span><br><span class="line">(*(vec.<span class="built_in">begin</span>()))+<span class="number">1</span>;<span class="comment">//注意加号运算符的优先级低于解引用运算符*</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3"><a href="#4-3" class="headerlink" title="4.3"></a>4.3</h3><p>这种权衡是很有必要的，因为速度一直都是C++的优势，不能放弃。同时我们可以在设计程序尽量避免写出带有缺陷的代码</p>
+<h3 id="4-4"><a href="#4-4" class="headerlink" title="4.4"></a>4.4</h3><p>表达式中添加括号，说明求值过程及最终结果</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//原</span></span><br><span class="line"><span class="number">12</span>/<span class="number">3</span>*<span class="number">4</span>+<span class="number">5</span>*<span class="number">15</span>+<span class="number">24</span>%<span class="number">4</span>/<span class="number">2</span></span><br><span class="line"><span class="comment">//添加括号</span></span><br><span class="line">((<span class="number">12</span>/<span class="number">3</span>)*<span class="number">4</span>)+(<span class="number">5</span>*<span class="number">15</span>)+((<span class="number">24</span>%<span class="number">4</span>)/<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-5"><a href="#4-5" class="headerlink" title="4.5"></a>4.5</h3><p>表达式的求值结果</p>
+<p>-86，-18，0，-2</p>
+<h3 id="4-6"><a href="#4-6" class="headerlink" title="4.6"></a>4.6</h3><p>写出表达式确定一个整数是奇数还是偶数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">num % <span class="number">2</span> == <span class="number">0</span> ? <span class="string">"偶数"</span> : <span class="string">"奇数"</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-7"><a href="#4-7" class="headerlink" title="4.7"></a>4.7</h3><p>溢出的含义，写出导致溢出的表达式</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//溢出是指计算的结果超出该类型所能表示的范围</span></span><br><span class="line">short svalue = <span class="number">32767</span>; ++svalue; <span class="comment">// -32768</span></span><br><span class="line"><span class="keyword">unsigned</span> uivalue = <span class="number">0</span>; --uivalue;  <span class="comment">// 4294967295</span></span><br><span class="line"><span class="keyword">unsigned</span> short usvalue = <span class="number">65535</span>; ++usvalue;  <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-8"><a href="#4-8" class="headerlink" title="4.8"></a>4.8</h3><p>说明逻辑与、逻辑或及相等性运算符中运算对象求值的顺序</p>
+<p>X&amp;&amp;Y  只有当X为true时才会去检查Y的bool值</p>
+<p>X||Y  只有当X为false时才会去检查Y的bool值</p>
+<p>X==Y  只有当X与Y的值相等时，才会返回true，否则为false</p>
+<h3 id="4-9"><a href="#4-9" class="headerlink" title="4.9"></a>4.9</h3><p>解释if语句中条件部分的判断过程</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> *cp=<span class="string">"hello world"</span>;</span><br><span class="line"><span class="keyword">if</span>(cp&amp;&amp;*cp)</span><br><span class="line">    <span class="comment">//判断过程：首先判断cp是一个const char指针，不是空指针（nullptr），因此为true；其次判断*cp，其值为"hello world"，是一个非零值，因此为true；所以true&amp;&amp;true-&gt;true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-10"><a href="#4-10" class="headerlink" title="4.10"></a>4.10</h3><p>为while循环写一个条件，使其从标准输入读取整数，遇到42停止</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> val=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>((<span class="built_in">std</span>::<span class="built_in">cin</span>&gt;&gt;val)&amp;&amp;val!=<span class="number">42</span>)&#123;</span><br><span class="line">	pass;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-11"><a href="#4-11" class="headerlink" title="4.11"></a>4.11</h3><p>一条语句确保a大于b，b大于c，c大于d</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(a&gt;b)&amp;&amp;(b&gt;c)&amp;&amp;(c&gt;d)</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-12"><a href="#4-12" class="headerlink" title="4.12"></a>4.12</h3><p>i j k是三个整数，说明<em>i!=j&lt;k</em>的含义</p>
+<p>根据优先级可以改写为<em>i!=(j&lt;k)<em>，那么i会跟后面表达式的结果即bool值作比较，因为三者都是整数，可以改写为</em>i!=j&amp;&amp;j&lt;k</em></p>
+<h3 id="4-13"><a href="#4-13" class="headerlink" title="4.13"></a>4.13</h3><p>赋值完成后i和d的值分别是什么</p>
+<p>(a) i是3，d是3.0</p>
+<p>(b) d是3.5，i是3</p>
+<h3 id="4-14"><a href="#4-14" class="headerlink" title="4.14"></a>4.14</h3><p>非法，合法</p>
+<h3 id="4-15"><a href="#4-15" class="headerlink" title="4.15"></a>4.15</h3><p>不能将指针值赋值给int，应该改为：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> dval;<span class="keyword">int</span> ival;<span class="keyword">int</span> *pi;</span><br><span class="line">dval=ival=<span class="number">0</span>;</span><br><span class="line">pi=<span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-16"><a href="#4-16" class="headerlink" title="4.16"></a>4.16</h3><p>实际行为与预期不一样的原因，造成歧义</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//(a)</span></span><br><span class="line"><span class="keyword">if</span>((p=getPtr())!=<span class="number">0</span>)</span><br><span class="line"><span class="comment">//(b)</span></span><br><span class="line"><span class="keyword">if</span>(i==<span class="number">1024</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-17"><a href="#4-17" class="headerlink" title="4.17"></a>4.17</h3><p>说明前置递增运算符和后置递增运算符的区别</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">++a<span class="comment">//先将a加一作为a的新值，调用的时候用的是a的新值</span></span><br><span class="line">a++<span class="comment">//将a加一作为a的新值，调用的时候用的是a的旧值</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-18"><a href="#4-18" class="headerlink" title="4.18"></a>4.18</h3><p>pbeg向前移动一个位置，并输出新位置上的元素值。最终会输出v.end()，这是尾后迭代器，对其值的输出不一定有意义。</p>
+<h3 id="4-19"><a href="#4-19" class="headerlink" title="4.19"></a>4.19</h3><p>(a) 检查ptr不是一个空指针，检查ptr指向的值非0</p>
+<p>(b) 检查ival不是0，检查ival+1是否为0</p>
+<p>(c) 非法，未定义的行为。应该改为<em>vec[ival]&lt;=vec[ival+1]</em>.原因运算符两侧都有ival，同时左侧的表达式会影响右侧的值。</p>
+<h3 id="4-20"><a href="#4-20" class="headerlink" title="4.20"></a>4.20</h3><p>iter的类型为<em>vector<string>::iterator</em>，说明以下表达式是否合法</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">*iter++;<span class="comment">//解引用优先级低于++,因此会先++,然后调取原迭代器指向的值，合法</span></span><br><span class="line">(*iter)++;<span class="comment">//先解引用，得到迭代器指向的值，然后该值加一，但是值为string，不存在加一，非法</span></span><br><span class="line">*iter.empty()<span class="comment">//对于指针类型的对象应该使用iter-&gt;empty()或者写为(*iter).empty(),非法</span></span><br><span class="line">iter-&gt;empty();<span class="comment">//合法</span></span><br><span class="line">++*iter;<span class="comment">//非法，string无法加一</span></span><br><span class="line">iter++-&gt;empty();<span class="comment">//首先iter-&gt;empty(),然后执行++</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-21"><a href="#4-21" class="headerlink" title="4.21"></a>4.21</h3><p>使用条件运算符从vector<int>中找到哪些元素的值是奇数，然后将这些奇数翻倍</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ivec = &#123; <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span> &#125;;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> &amp;item : ivec) &#123;</span><br><span class="line">		item = (item % <span class="number">2</span> == <span class="number">0</span>) ? item * <span class="number">2</span> : item;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> &amp;item : ivec) &#123;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; item &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;num%<span class="number">2</span>==<span class="number">0</span>?num*=<span class="number">2</span>:;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-22"><a href="#4-22" class="headerlink" title="4.22"></a>4.22</h3><p>两个版本的程序（一使用条件运算符，而使用if语句）实现成绩的层级划分</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> grade = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; grade) &#123;</span><br><span class="line">		<span class="comment">//使用条件运算符</span></span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"条件运算符结果："</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; ((grade &gt; <span class="number">90</span>) ? <span class="string">"hight pass"</span></span><br><span class="line">			: (grade &gt; <span class="number">75</span>) ? <span class="string">"pass"</span> : (grade &gt; <span class="number">60</span>) ? <span class="string">"low pass"</span> : <span class="string">"fail"</span>);</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">		<span class="comment">//使用if语句</span></span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"if语句的结果："</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">if</span> (grade &gt; <span class="number">90</span>)</span><br><span class="line">			<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"hight pass"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (grade &gt; <span class="number">75</span>)</span><br><span class="line">			<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"pass"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (grade &gt; <span class="number">60</span>)</span><br><span class="line">			<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"low pass"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"fail"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-23"><a href="#4-23" class="headerlink" title="4.23"></a>4.23</h3><p>以下表达式无法通过编译的原因：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> s=<span class="string">"word"</span>;</span><br><span class="line"><span class="built_in">string</span> pl=s+s[s.<span class="built_in">size</span>()<span class="number">-1</span>]==<span class="string">'s'</span>?<span class="string">""</span>:<span class="string">"s"</span>;<span class="comment">//改为</span></span><br><span class="line"><span class="built_in">string</span> pl=s+(s[s.<span class="built_in">size</span>()<span class="number">-1</span>]==<span class="string">'s'</span>?<span class="string">""</span>:<span class="string">"s"</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-24"><a href="#4-24" class="headerlink" title="4.24"></a>4.24</h3><p>如果条件运算符满足左结合律，那么求值过程是：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">finalgrade = (grade &gt; <span class="number">90</span>) ? <span class="string">"high pass"</span> : (grade &lt; <span class="number">60</span>) ? <span class="string">"fail"</span> : <span class="string">"pass"</span>;<span class="comment">//源程序，当满足左结合律时类似于：</span></span><br><span class="line">finalgrade = ((grade &gt; <span class="number">90</span>) ? <span class="string">"high pass"</span> : (grade &lt; <span class="number">60</span>)) ? <span class="string">"fail"</span> : <span class="string">"pass"</span>;<span class="comment">//注意括号的位置</span></span><br><span class="line"><span class="comment">//当输入grade&gt;90时，结果将会一直是fail</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-25"><a href="#4-25" class="headerlink" title="4.25"></a>4.25</h3><p>机器上int占32位，char占8位，用的的Latin-1字符集，其中’q’的二进制形式是01110001，求表达式’q’&lt;&lt;6的值：</p>
+<p>64</p>
+<h3 id="4-26"><a href="#4-26" class="headerlink" title="4.26"></a>4.26</h3><p>如果使用unsigned int作为quiz1的类型会出现什么情况：</p>
+<p>位数不够</p>
+<h3 id="4-27"><a href="#4-27" class="headerlink" title="4.27"></a>4.27</h3><p>表达式的结果：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> <span class="keyword">long</span> ul1=<span class="number">3</span>,ul2=<span class="number">7</span>;<span class="comment">//0011,0111</span></span><br><span class="line">ul1&amp;ul2<span class="comment">//0011 3</span></span><br><span class="line">ul1|ul2<span class="comment">//0111 7</span></span><br><span class="line">ul1&amp;&amp;ul2<span class="comment">//true</span></span><br><span class="line">ul1||ul2<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-28"><a href="#4-28" class="headerlink" title="4.28"></a>4.28</h3><p>编写程序，输出每一种内置类型所占空间的大小</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"bool\t\tis "</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">bool</span>) &lt;&lt; <span class="string">"bytes."</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"char\t\tis "</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">char</span>) &lt;&lt; <span class="string">"bytes."</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"wchar_t\t\tis "</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">wchar_t</span>) &lt;&lt; <span class="string">"bytes."</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"char16_t\tis "</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">char16_t</span>) &lt;&lt; <span class="string">"bytes."</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"char32_t\tis "</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">char32_t</span>) &lt;&lt; <span class="string">"bytes."</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"short\t\tis "</span> &lt;&lt; <span class="keyword">sizeof</span>(short) &lt;&lt; <span class="string">"bytes."</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"int\t\tis "</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">int</span>) &lt;&lt; <span class="string">"bytes."</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"long\t\tis "</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">long</span>) &lt;&lt; <span class="string">"bytes."</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"long long\tis "</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">long</span> <span class="keyword">long</span>) &lt;&lt; <span class="string">"bytes."</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"float\t\tis "</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">float</span>) &lt;&lt; <span class="string">"bytes."</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"double\t\tis "</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">double</span>) &lt;&lt; <span class="string">"bytes."</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"long double\tis "</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">long</span> <span class="keyword">double</span>) &lt;&lt; <span class="string">"bytes."</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-29"><a href="#4-29" class="headerlink" title="4.29"></a>4.29</h3><p>推断以下代码的输出结果并实际运行</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x[<span class="number">10</span>];</span><br><span class="line">	<span class="keyword">int</span> *p = x;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="keyword">sizeof</span>(x) / <span class="keyword">sizeof</span>(*x) &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;<span class="comment">//10,表示数组元素数目</span></span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="keyword">sizeof</span>(p) / <span class="keyword">sizeof</span>(*p) &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;<span class="comment">//64位机器时为2，32位机器为1</span></span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="keyword">sizeof</span>(p) &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;<span class="comment">//8</span></span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="keyword">sizeof</span>(*p) &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;<span class="comment">//4</span></span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-30"><a href="#4-30" class="headerlink" title="4.30"></a>4.30</h3><p>表达式适当位置加上括号，保持表达式含义不变</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">sizeof</span> x)+y</span><br><span class="line"><span class="keyword">sizeof</span> (p-&gt;mem[i])</span><br><span class="line">(<span class="keyword">sizeof</span> a)&lt;b</span><br><span class="line"><span class="function"><span class="keyword">sizeof</span> <span class="title">f</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-31"><a href="#4-31" class="headerlink" title="4.31"></a>4.31</h3><p>如果相使用后置递增递减的话，不需要做其他修改。两个版本的运算符在循环中是一样的，但是在实际使用过程中推荐使用前置版本，因为当使用后置版本时需要开辟额外的内存空间存储元素递增递减前的原值，如果对原值不做操作的话这一步完全可以使用前置版本。</p>
+<h3 id="4-32"><a href="#4-32" class="headerlink" title="4.32"></a>4.32</h3><p>解释循环的意义</p>
+<p>ptr和ix最终所起的作用是一样的。可以选择指针ptr作为循环条件，也可以选择ix即下标作为循环条件。</p>
+<h3 id="4-33"><a href="#4-33" class="headerlink" title="4.33"></a>4.33</h3><p>解释表达式含义：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">somevalue? ++x,++y:--x.--y;</span><br><span class="line"><span class="comment">//以上表达式中逗号的优先级最低，因此可以写成</span></span><br><span class="line">(somevalue? ++x,++y:--x).--y;</span><br><span class="line"><span class="comment">//以上表达式的含义时if somevalue==true,then ++y and result-&gt;++y-&gt;--y,即结果为y,否则then--x,同时result-&gt;--y</span></span><br><span class="line"><span class="comment">//注意逗号运算符的结果是逗号右侧的表达式结果</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-34"><a href="#4-34" class="headerlink" title="4.34"></a>4.34</h3><p>说明表达式将发生什么样的类型转换</p>
+<p>(a) if(fval)  fval从float提升到bool</p>
+<p>(b) dval=fval+ival ival提升到fval，相加后结果提升到double</p>
+<p>(c) dval+ival*cval cval提升到ival，相乘后结果提升到double与dval相加</p>
+<h3 id="4-35"><a href="#4-35" class="headerlink" title="4.35"></a>4.35</h3><p>指出是否发生隐式类型转换：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> cval;</span><br><span class="line"><span class="keyword">int</span> ival;</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> ui;</span><br><span class="line"><span class="keyword">float</span> fval;</span><br><span class="line"><span class="keyword">double</span> dval;</span><br><span class="line">cval=<span class="string">'a'</span>+<span class="number">3</span>;<span class="comment">//'a'提升为int,然后相加后提升为char</span></span><br><span class="line">fval=ui-ival*<span class="number">1.0</span>;<span class="comment">//ival提升为double,ui提升为double,相减的结果提升为float</span></span><br><span class="line">dval=ui*fval;<span class="comment">//ui提升为float，相乘后提升为double</span></span><br><span class="line">cval=ival+fval+dval;<span class="comment">//ival和fval分别提升为double，相加后提升为char</span></span><br><span class="line"><span class="comment">//注意，当double-&gt;float或者double-&gt;char时会有数据的损失</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-36"><a href="#4-36" class="headerlink" title="4.36"></a>4.36</h3><p>假设i是int类型，d是double类型，书写表达式i*=d使其执行整数类型的乘法而非浮点类型的乘法</p>
+<p>使用强制类型转换static_cast：i*=static_cast<int>(d)</p>
+<h3 id="4-37"><a href="#4-37" class="headerlink" title="4.37"></a>4.37</h3><p>使用命名的强制类型转换改写下列旧式的转换语句</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i;</span><br><span class="line"><span class="keyword">double</span> d;</span><br><span class="line"><span class="keyword">const</span> <span class="built_in">string</span> *ps;</span><br><span class="line"><span class="keyword">char</span> *pc;</span><br><span class="line"><span class="keyword">void</span> *pv;</span><br><span class="line">pv=(<span class="keyword">void</span>*)ps;<span class="comment">//pv=const_cast&lt;string*&gt;(ps);</span></span><br><span class="line">i=<span class="keyword">int</span>(*pc);<span class="comment">//i=static_cast&lt;int&gt;(*pc);</span></span><br><span class="line">pv=&amp;d;<span class="comment">//pv=static_cast&lt;void*&gt;(&amp;d);</span></span><br><span class="line">pc=(<span class="keyword">char</span>*)pv;<span class="comment">//pc=reinterpret_cast&lt;char*&gt;(pv);</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-38"><a href="#4-38" class="headerlink" title="4.38"></a>4.38</h3><p>表达式含义：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> slope=<span class="keyword">static_cast</span>&lt;<span class="keyword">double</span>&gt;(j/i);</span><br><span class="line"><span class="comment">//j/i经计算后是int型，通过static_cast&lt;double&gt;将结果强制转换为double型</span></span><br></pre></td></tr></table></figure>
+
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>Author：<a href="http://yoursite.com">John Doe</a>
+            <p>原文链接：<a href="http://yoursite.com/2020/02/14/chapter4/">http://yoursite.com/2020/02/14/chapter4/</a>
+            <p>发表日期：<a href="http://yoursite.com/2020/02/14/chapter4/">February 14th 2020, 8:27:32 pm</a>
+            <p>更新日期：<a href="http://yoursite.com/2020/02/14/chapter4/">February 14th 2020, 8:28:40 pm</a>
+            <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2020/02/09/chapter3/" title= "C++primer 5th chapter3 练习题">
+                    <div class="prevTitle">C++primer 5th chapter3 练习题</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:xulei_@hotmail.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/rayshaw13" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/example_qr.png" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1"><span class="toc-number">1.</span> <span class="toc-text">4.1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2"><span class="toc-number">2.</span> <span class="toc-text">4.2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3"><span class="toc-number">3.</span> <span class="toc-text">4.3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4"><span class="toc-number">4.</span> <span class="toc-text">4.4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5"><span class="toc-number">5.</span> <span class="toc-text">4.5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6"><span class="toc-number">6.</span> <span class="toc-text">4.6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-7"><span class="toc-number">7.</span> <span class="toc-text">4.7</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-8"><span class="toc-number">8.</span> <span class="toc-text">4.8</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-9"><span class="toc-number">9.</span> <span class="toc-text">4.9</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-10"><span class="toc-number">10.</span> <span class="toc-text">4.10</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-11"><span class="toc-number">11.</span> <span class="toc-text">4.11</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-12"><span class="toc-number">12.</span> <span class="toc-text">4.12</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-13"><span class="toc-number">13.</span> <span class="toc-text">4.13</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-14"><span class="toc-number">14.</span> <span class="toc-text">4.14</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-15"><span class="toc-number">15.</span> <span class="toc-text">4.15</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-16"><span class="toc-number">16.</span> <span class="toc-text">4.16</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-17"><span class="toc-number">17.</span> <span class="toc-text">4.17</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-18"><span class="toc-number">18.</span> <span class="toc-text">4.18</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-19"><span class="toc-number">19.</span> <span class="toc-text">4.19</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-20"><span class="toc-number">20.</span> <span class="toc-text">4.20</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-21"><span class="toc-number">21.</span> <span class="toc-text">4.21</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-22"><span class="toc-number">22.</span> <span class="toc-text">4.22</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-23"><span class="toc-number">23.</span> <span class="toc-text">4.23</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-24"><span class="toc-number">24.</span> <span class="toc-text">4.24</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-25"><span class="toc-number">25.</span> <span class="toc-text">4.25</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-26"><span class="toc-number">26.</span> <span class="toc-text">4.26</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-27"><span class="toc-number">27.</span> <span class="toc-text">4.27</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-28"><span class="toc-number">28.</span> <span class="toc-text">4.28</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-29"><span class="toc-number">29.</span> <span class="toc-text">4.29</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-30"><span class="toc-number">30.</span> <span class="toc-text">4.30</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-31"><span class="toc-number">31.</span> <span class="toc-text">4.31</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-32"><span class="toc-number">32.</span> <span class="toc-text">4.32</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-33"><span class="toc-number">33.</span> <span class="toc-text">4.33</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-34"><span class="toc-number">34.</span> <span class="toc-text">4.34</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-35"><span class="toc-number">35.</span> <span class="toc-text">4.35</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-36"><span class="toc-number">36.</span> <span class="toc-text">4.36</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-37"><span class="toc-number">37.</span> <span class="toc-text">4.37</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-38"><span class="toc-number">38.</span> <span class="toc-text">4.38</span></a></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 5
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/14</span><a class="archive-post-title" href= "/2020/02/14/chapter4/" >chapter4</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2020/02/09/chapter3/" >C++primer 5th chapter3 练习题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2020/02/09/chapter2/" >C++primer 5th chapter2 练习题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2020/02/09/c-primer-chapter1-exc/" >C++primer 5th chapter1 练习题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/08</span><a class="archive-post-title" href= "/2020/02/08/hello-world/" >Hello World</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "John Doe"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+
