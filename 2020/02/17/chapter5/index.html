@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="leixu">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="leixu">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>C++ primer 5th chapter5练习题 · 我进的球都是侥幸，打的铁才是人生</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/favicon.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >美如画的杂货铺.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">C++ primer 5th chapter5练习题</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>美如画的杂货铺.</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            C++ primer 5th chapter5练习题
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "C++">C++</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">2.9k</span>Reading time: <span class="post-count reading-time">14 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/02/17</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h3 id="5-1"><a href="#5-1" class="headerlink" title="5.1"></a>5.1</h3><p>空语句只含有一个单独的分号。如果在程序的某个地方，语法上需要一条语句但是逻辑上不需要，应该使用空语句。</p>
+<h3 id="5-2"><a href="#5-2" class="headerlink" title="5.2"></a>5.2</h3><p>块是指用花括号括起来的（可能为空的）语句和声明的序列，也被称为复合语句。如果在程序的某个地方，语法上需要一条语句，但是逻辑上需要多条语句实现，则应该使用复合语句（或称为块）。</p>
+<h3 id="5-3"><a href="#5-3" class="headerlink" title="5.3"></a>5.3</h3><p>使用逗号运算符重写while循环，使其不再需要块。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//原语句块</span></span><br><span class="line"><span class="keyword">while</span>(val&lt;=<span class="number">20</span>)&#123;</span><br><span class="line">	sum+=val;</span><br><span class="line">	++val;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//逗号运算符修改</span></span><br><span class="line"><span class="keyword">while</span>(val&lt;=<span class="number">10</span>)&#123;</span><br><span class="line">	sum+=val,++val;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//可读性降低</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-4"><a href="#5-4" class="headerlink" title="5.4"></a>5.4</h3><p>程序的含义若存在问题进行修改</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//(a)</span></span><br><span class="line"><span class="keyword">while</span> (<span class="built_in">string</span>::iterator iter!=s.<span class="built_in">end</span>())!=s.<span class="built_in">end</span>()) &#123;<span class="comment">/*...*/</span>&#125;</span><br><span class="line"><span class="comment">//以上程序中iter没有指向任何元素，应该改为：</span></span><br><span class="line"><span class="built_in">string</span>::iterator iter=s.<span class="built_in">begin</span>();</span><br><span class="line"><span class="keyword">while</span>(iter!=s.<span class="built_in">end</span>())&#123;<span class="comment">/*...*/</span>&#125;</span><br><span class="line"><span class="comment">//(b)</span></span><br><span class="line"><span class="keyword">while</span> (<span class="keyword">bool</span> status = <span class="built_in">find</span>(<span class="keyword">word</span>)) &#123;<span class="comment">/*...*/</span>&#125;</span><br><span class="line">    <span class="keyword">if</span>(!status) &#123;<span class="comment">/*...*/</span>&#125;</span><br><span class="line"><span class="comment">//以上程序中if语句不应该缩进以免造成if语句在while语句内的假象，同时应该对status定义，因此修改如下</span></span><br><span class="line"><span class="keyword">bool</span> status;</span><br><span class="line"><span class="keyword">while</span> (status = <span class="built_in">find</span>(<span class="keyword">word</span>)) &#123;<span class="comment">/*...*/</span>&#125;</span><br><span class="line"><span class="keyword">if</span>(!status) &#123;<span class="comment">/*...*/</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-5"><a href="#5-5" class="headerlink" title="5.5"></a>5.5</h3><p>写一段自己的程序，使用if-else语句实现将数字成绩转换为字母成绩的要求</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"请输入你的成绩（0~100）："</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">int</span> score;</span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; score) &#123;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"你的成绩等级为："</span>;</span><br><span class="line">		<span class="keyword">if</span> (score == <span class="number">100</span>)</span><br><span class="line">			<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"A++"</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(score&gt;<span class="number">89</span>)</span><br><span class="line">			<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"A"</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(score&gt;<span class="number">79</span>)</span><br><span class="line">			<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"B"</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(score&gt;<span class="number">69</span>)</span><br><span class="line">			<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"C"</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(score&gt;<span class="number">59</span>)</span><br><span class="line">			<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"D"</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"F"</span>;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-6"><a href="#5-6" class="headerlink" title="5.6"></a>5.6</h3><p>使用条件运算符替换上面程序中的if-else语句</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"请输入你的成绩（0~100）："</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">int</span> score;</span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; score) &#123;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"你的成绩等级为："</span>;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; (score == <span class="number">100</span> ? <span class="string">"A++"</span> : score &gt; <span class="number">89</span> ? <span class="string">"A"</span> : score &gt; <span class="number">79</span> ? <span class="string">"B"</span> : score &gt; <span class="number">69</span> ? <span class="string">"C"</span> : score &gt; <span class="number">59</span> ? <span class="string">"D"</span> : <span class="string">"F"</span>);</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-7"><a href="#5-7" class="headerlink" title="5.7"></a>5.7</h3><p>改正程序的错误</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//修改后的程序为：</span></span><br><span class="line"><span class="keyword">if</span>(ival1!=ival2)</span><br><span class="line">	ival1=ival2;</span><br><span class="line"><span class="keyword">else</span> ival1=ival2=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(ival&lt;minval)&#123;</span><br><span class="line">	minval=ival;</span><br><span class="line">	occurs=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> ival;</span><br><span class="line"><span class="keyword">if</span>(ival=get_value())</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">"ival="</span>&lt;&lt;ival&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="keyword">if</span>(!ival)</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">"ival=0\n"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(ival==<span class="number">0</span>)</span><br><span class="line">	ival=get_value();</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-8"><a href="#5-8" class="headerlink" title="5.8"></a>5.8</h3><p>什么是悬垂else，C++如何处理else子句？</p>
+<p>当一个if语句嵌套在另一个if语句内部时，很可能if会多于else，这种情况就是悬垂else。</p>
+<p>用花括号处理，强迫if-else的配对。</p>
+<h3 id="5-9"><a href="#5-9" class="headerlink" title="5.9"></a>5.9</h3><p>编写程序使用一系列if语句统计cin读入的文本中有多少元音字符</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"请输入你的文本："</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">char</span> ch;</span><br><span class="line">	<span class="keyword">int</span> acnt = <span class="number">0</span>, ecnt = <span class="number">0</span>, icnt = <span class="number">0</span>, ocnt = <span class="number">0</span>, ucnt = <span class="number">0</span>,othercnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; ch) &#123;</span><br><span class="line">		<span class="keyword">if</span> (ch == <span class="string">'a'</span>)</span><br><span class="line">			++acnt;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (ch == <span class="string">'e'</span>)</span><br><span class="line">			++ecnt;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (ch == <span class="string">'i'</span>)</span><br><span class="line">			++icnt;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (ch == <span class="string">'o'</span>)</span><br><span class="line">			++ocnt;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (ch == <span class="string">'u'</span>)</span><br><span class="line">			++ucnt;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			++othercnt;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"a出现的次数为："</span> &lt;&lt; acnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"e出现的次数为："</span> &lt;&lt; ecnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"i出现的次数为："</span> &lt;&lt; icnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"o出现的次数为："</span> &lt;&lt; ocnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"u出现的次数为："</span> &lt;&lt; ucnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"其他字符出现的次数为："</span> &lt;&lt; othercnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-10"><a href="#5-10" class="headerlink" title="5.10"></a>5.10</h3><p>编写程序统计元音字母，不区分大小写</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"请输入你的文本："</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">char</span> ch;</span><br><span class="line">	<span class="keyword">int</span> acnt = <span class="number">0</span>, ecnt = <span class="number">0</span>, icnt = <span class="number">0</span>, ocnt = <span class="number">0</span>, ucnt = <span class="number">0</span>,othercnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; ch) &#123;</span><br><span class="line">		<span class="keyword">switch</span> (ch)</span><br><span class="line">		&#123;</span><br><span class="line">		<span class="keyword">case</span>(<span class="string">'a'</span>):<span class="keyword">case</span>(<span class="string">'A'</span>):</span><br><span class="line">			++acnt;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span>(<span class="string">'e'</span>):<span class="keyword">case</span>(<span class="string">'E'</span>):</span><br><span class="line">			++ecnt;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span>(<span class="string">'i'</span>):<span class="keyword">case</span>(<span class="string">'I'</span>):</span><br><span class="line">			++icnt;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span>(<span class="string">'o'</span>):<span class="keyword">case</span>(<span class="string">'O'</span>):</span><br><span class="line">			++ocnt;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span>(<span class="string">'u'</span>):<span class="keyword">case</span>(<span class="string">'U'</span>):</span><br><span class="line">			++ucnt;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			++othercnt;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"a出现的次数为："</span> &lt;&lt; acnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"e出现的次数为："</span> &lt;&lt; ecnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"i出现的次数为："</span> &lt;&lt; icnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"o出现的次数为："</span> &lt;&lt; ocnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"u出现的次数为："</span> &lt;&lt; ucnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"其他字符出现的次数为："</span> &lt;&lt; othercnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-11"><a href="#5-11" class="headerlink" title="5.11"></a>5.11</h3><p>修改统计元音字母的程序，使其也能统计空格、制表符和换行符的数量</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"请输入你的文本："</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">char</span> ch;</span><br><span class="line">	<span class="keyword">int</span> acnt = <span class="number">0</span>, ecnt = <span class="number">0</span>, icnt = <span class="number">0</span>, ocnt = <span class="number">0</span>, ucnt = <span class="number">0</span>,othercnt=<span class="number">0</span>,spacecnt=<span class="number">0</span>,tcnt=<span class="number">0</span>,ncnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">std</span>::<span class="built_in">cin</span>&gt;&gt; <span class="built_in">std</span>::noskipws &gt;&gt; ch) &#123;</span><br><span class="line">		<span class="keyword">switch</span> (ch)</span><br><span class="line">		&#123;</span><br><span class="line">		<span class="keyword">case</span>(<span class="string">'a'</span>):<span class="keyword">case</span>(<span class="string">'A'</span>):</span><br><span class="line">			++acnt;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span>(<span class="string">'e'</span>):<span class="keyword">case</span>(<span class="string">'E'</span>):</span><br><span class="line">			++ecnt;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span>(<span class="string">'i'</span>):<span class="keyword">case</span>(<span class="string">'I'</span>):</span><br><span class="line">			++icnt;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span>(<span class="string">'o'</span>):<span class="keyword">case</span>(<span class="string">'O'</span>):</span><br><span class="line">			++ocnt;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span>(<span class="string">'u'</span>):<span class="keyword">case</span>(<span class="string">'U'</span>):</span><br><span class="line">			++ucnt;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span>(<span class="string">' '</span>):</span><br><span class="line">			++spacecnt;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span>(<span class="string">'\t'</span>):</span><br><span class="line">			++tcnt;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span>(<span class="string">'\n'</span>):</span><br><span class="line">			++ncnt;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			++othercnt;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"a出现的次数为："</span> &lt;&lt; acnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"e出现的次数为："</span> &lt;&lt; ecnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"i出现的次数为："</span> &lt;&lt; icnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"o出现的次数为："</span> &lt;&lt; ocnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"u出现的次数为："</span> &lt;&lt; ucnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"空格出现的次数为："</span> &lt;&lt; spacecnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"制表符出现的次数为："</span> &lt;&lt; tcnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"换行符出现的次数为："</span> &lt;&lt; ncnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"其他字符出现的次数为："</span> &lt;&lt; othercnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意以上程序中while处有一个std::noskipws，其作用是不忽略任意地方的空格。</p>
+<h3 id="5-12"><a href="#5-12" class="headerlink" title="5.12"></a>5.12</h3><p>修改以上程序，使其能够统计以下含有两个字符的字符序列的数量：ff和fl和fi</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"请输入你的文本："</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">char</span> ch,prech=<span class="string">'\0'</span>;</span><br><span class="line">	<span class="keyword">int</span> acnt = <span class="number">0</span>, ecnt = <span class="number">0</span>, icnt = <span class="number">0</span>, ocnt = <span class="number">0</span>, ucnt = <span class="number">0</span>, othercnt = <span class="number">0</span>, spacecnt = <span class="number">0</span>, tcnt = <span class="number">0</span>, ncnt = <span class="number">0</span>, ficnt = <span class="number">0</span>,ffcnt=<span class="number">0</span>,flcnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">std</span>::<span class="built_in">cin</span>&gt;&gt; <span class="built_in">std</span>::noskipws &gt;&gt; ch) &#123;</span><br><span class="line">		<span class="keyword">switch</span> (ch)</span><br><span class="line">		&#123;</span><br><span class="line">		<span class="keyword">case</span>(<span class="string">'a'</span>):<span class="keyword">case</span>(<span class="string">'A'</span>):</span><br><span class="line">			++acnt;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span>(<span class="string">'e'</span>):<span class="keyword">case</span>(<span class="string">'E'</span>):</span><br><span class="line">			++ecnt;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span>(<span class="string">'i'</span>):</span><br><span class="line">			<span class="keyword">if</span> (prech == <span class="string">'f'</span>)</span><br><span class="line">				++ficnt;</span><br><span class="line">		<span class="keyword">case</span>(<span class="string">'I'</span>):</span><br><span class="line">			++icnt;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span>(<span class="string">'o'</span>):<span class="keyword">case</span>(<span class="string">'O'</span>):</span><br><span class="line">			++ocnt;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span>(<span class="string">'u'</span>):<span class="keyword">case</span>(<span class="string">'U'</span>):</span><br><span class="line">			++ucnt;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span>(<span class="string">' '</span>):</span><br><span class="line">			++spacecnt;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span>(<span class="string">'\t'</span>):</span><br><span class="line">			++tcnt;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span>(<span class="string">'\n'</span>):</span><br><span class="line">			++ncnt;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span>(<span class="string">'f'</span>):</span><br><span class="line">			<span class="keyword">if</span> (prech == <span class="string">'f'</span>)</span><br><span class="line">				++ffcnt;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span>(<span class="string">'l'</span>):</span><br><span class="line">			<span class="keyword">if</span> (prech == <span class="string">'f'</span>)</span><br><span class="line">				++flcnt;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			++othercnt;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		prech = ch;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"a出现的次数为："</span> &lt;&lt; acnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"e出现的次数为："</span> &lt;&lt; ecnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"i出现的次数为："</span> &lt;&lt; icnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"o出现的次数为："</span> &lt;&lt; ocnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"u出现的次数为："</span> &lt;&lt; ucnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"空格出现的次数为："</span> &lt;&lt; spacecnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"制表符出现的次数为："</span> &lt;&lt; tcnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"换行符出现的次数为："</span> &lt;&lt; ncnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"fi出现的次数为："</span> &lt;&lt; ficnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"fl出现的次数为："</span> &lt;&lt; flcnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"ff出现的次数为："</span> &lt;&lt; ffcnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"其他字符出现的次数为："</span> &lt;&lt; othercnt &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-13"><a href="#5-13" class="headerlink" title="5.13"></a>5.13</h3><p>(a) 缺少break</p>
+<p>(b) ix的定义位置不对</p>
+<p>(c) 多条case语句写在一起时格式不对</p>
+<p>(d) case语句必须是一个常量表达式</p>
+<h3 id="5-14"><a href="#5-14" class="headerlink" title="5.14"></a>5.14</h3><p>标准输入中读取若干string对象并查找连续重复出现的单词</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"请输入你的字符串："</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">string</span> curStr,preStr=<span class="string">""</span>,maxStr=<span class="string">""</span>;</span><br><span class="line">	<span class="keyword">int</span> curNum = <span class="number">0</span>,preNum=<span class="number">0</span>,maxNum=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; curStr) &#123;</span><br><span class="line">		<span class="keyword">if</span> (curStr == preStr) &#123;</span><br><span class="line">			++curNum;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			preStr = curStr;</span><br><span class="line">			curNum = <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (maxNum &lt; curNum) &#123;</span><br><span class="line">			maxNum = curNum;</span><br><span class="line">			maxStr = preStr;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"连续出现次数最多的字符串是："</span> &lt;&lt; maxStr &lt;&lt; <span class="string">"，出现次数是："</span> &lt;&lt; maxNum &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-15"><a href="#5-15" class="headerlink" title="5.15"></a>5.15</h3><p>循环的含义，改正错误</p>
+<p>(a) 循环实现ix的递增。ix在for循环中定义，无法在if语句中继续使用。</p>
+<p>(b) for循环缺少初始值</p>
+<p>(c) sz将会一直增加，ix追不上sz，无限循环</p>
+<h3 id="5-16"><a href="#5-16" class="headerlink" title="5.16"></a>5.16</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// while idiomatic</span></span><br><span class="line"><span class="keyword">int</span> i;</span><br><span class="line"><span class="keyword">while</span> ( <span class="built_in">cin</span> &gt;&gt; i )</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// same as for</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; <span class="built_in">cin</span> &gt;&gt; i;)</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// for idiomatic</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i != <span class="built_in">size</span>; ++i)</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">// same as while</span></span><br><span class="line"><span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (i != <span class="built_in">size</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    ++i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-17"><a href="#5-17" class="headerlink" title="5.17"></a>5.17</h3><p>检验一个vector对象是否是另一个的前缀</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ivec1 = &#123; <span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span> &#125;;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ivec2 = &#123; <span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span> &#125;;</span><br><span class="line">	<span class="keyword">bool</span> same=<span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ivec1.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">		<span class="keyword">if</span> (ivec1[i] != ivec2[i]) &#123;</span><br><span class="line">			same = <span class="literal">false</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (same)</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"bingo"</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"not same"</span>;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-18"><a href="#5-18" class="headerlink" title="5.18"></a>5.18</h3><p>理解以下循环的含义并修改错误</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">	<span class="keyword">int</span> v1.v2;</span><br><span class="line">	<span class="comment">//...</span></span><br><span class="line">&#125;<span class="keyword">while</span>(<span class="built_in">cin</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> val;</span><br><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">	<span class="comment">//...</span></span><br><span class="line">&#125;<span class="keyword">while</span>(val=get_response());</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> ival=get_response();</span><br><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">	ival=get_response();</span><br><span class="line">&#125;<span class="keyword">while</span>(ival);</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-19"><a href="#5-19" class="headerlink" title="5.19"></a>5.19</h3><p>编写程序，使用do-while执行：首先提示用户输入两个string对象，然后选出较短的那个输出</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">string</span> strFlag;</span><br><span class="line">	<span class="keyword">do</span> &#123;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">string</span> str1, str2;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"please enter two string:"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; str1 &gt;&gt; str2 ;</span><br><span class="line">		<span class="keyword">if</span> (str1.<span class="built_in">size</span>() &lt; str2.<span class="built_in">size</span>())</span><br><span class="line">			<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"较短的字符串为："</span> &lt;&lt; str1 &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"较短的字符串为："</span> &lt;&lt; str2 &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"if you want to continue? y/n "</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; strFlag;</span><br><span class="line">	&#125; <span class="keyword">while</span> (strFlag==<span class="string">"y"</span>);</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-20"><a href="#5-20" class="headerlink" title="5.20"></a>5.20</h3><p>编写程序，标准输入读取string对象的序列直到连续出现两个相同的单词或者所有单词都读完为止。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">string</span> str, prestr = <span class="string">""</span>;</span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; str) &#123;</span><br><span class="line">        <span class="keyword">if</span>(!)</span><br><span class="line">		<span class="keyword">if</span> (str == prestr) &#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			prestr = str;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">std</span>::<span class="built_in">cin</span>.eof())</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"no same element"</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"the same element is: "</span> &lt;&lt; str;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//注：cin.eof()的作用是判断输入是否结束，当win系统下ctrl+z控制输入结束后，cin.eof()会返回true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-21"><a href="#5-21" class="headerlink" title="5.21"></a>5.21</h3><p>修改5.5.1练习题程序，使其找到的重复单词必须以大写字母开头</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">string</span> str, prestr = <span class="string">""</span>;</span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; str) &#123;</span><br><span class="line">		<span class="keyword">if</span> (!<span class="built_in">isupper</span>(str[<span class="number">0</span>])) &#123;</span><br><span class="line">			prestr = <span class="string">""</span>;</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (str == prestr) &#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			prestr = str;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">std</span>::<span class="built_in">cin</span>.eof())</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"no same element"</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"the same element is: "</span> &lt;&lt; str;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-22"><a href="#5-22" class="headerlink" title="5.22"></a>5.22</h3><p>for循环代替goto语句</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//源程序</span></span><br><span class="line"><span class="built_in">begin</span>:</span><br><span class="line">	<span class="keyword">int</span> sz=get_size();</span><br><span class="line">	<span class="keyword">if</span>(sz&lt;=<span class="number">0</span>)&#123;</span><br><span class="line">		<span class="keyword">goto</span> <span class="built_in">begin</span>;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment">//修改</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> sz=get_size();sz&lt;=<span class="number">0</span>;sz=get_size())</span><br><span class="line">	;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-23"><a href="#5-23" class="headerlink" title="5.23"></a>5.23</h3><p>编写程序，标准输入两个整数，输出第一个数除以第二个数的结果</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> num1, num2;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; num1 &gt;&gt; num2;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"result is: "</span> &lt;&lt; <span class="keyword">static_cast</span>&lt;<span class="keyword">double</span>&gt;(num1) / num2;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//static_cast实现强制类型转换</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-24"><a href="#5-24" class="headerlink" title="5.24"></a>5.24</h3><p>先不使用catch子句，实现除数为0时抛出异常</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> num1, num2;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; num1 &gt;&gt; num2;</span><br><span class="line">	<span class="keyword">if</span> (num2 == <span class="number">0</span>) <span class="keyword">throw</span> <span class="built_in">std</span>::runtime_error(<span class="string">"the second number is zero!!!"</span>);</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"result is: "</span> &lt;&lt; <span class="keyword">static_cast</span>&lt;<span class="keyword">double</span>&gt;(num1) / num2;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-25"><a href="#5-25" class="headerlink" title="5.25"></a>5.25</h3><p>try语句捕获异常，catch子句输出提示信息，询问是否重新输出并执行try语句</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a, b;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Input two integers: "</span>;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (b == <span class="number">0</span>) <span class="keyword">throw</span> runtime_error(<span class="string">"divisor is 0"</span>);</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="keyword">static_cast</span>&lt;<span class="keyword">double</span>&gt;(a) / b &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="string">"Input two integers: "</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (runtime_error err) &#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; err.what() ;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="string">"\nTry Again? Enter y or n:"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">            <span class="keyword">char</span> c;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; c;</span><br><span class="line">            <span class="keyword">if</span> (!<span class="built_in">cin</span> || c == <span class="string">'n'</span>)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; <span class="string">"Input two integers: "</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>Author：<a href="http://rayshaw13.github.io">leixu</a>
+            <p>原文链接：<a href="http://rayshaw13.github.io/2020/02/17/chapter5/">http://rayshaw13.github.io/2020/02/17/chapter5/</a>
+            <p>发表日期：<a href="http://rayshaw13.github.io/2020/02/17/chapter5/">February 17th 2020, 10:30:28 pm</a>
+            <p>更新日期：<a href="http://rayshaw13.github.io/2020/02/17/chapter5/">February 17th 2020, 10:31:29 pm</a>
+            <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2020/02/14/chapter4/" title= "C++primer 5th chapter4">
+                    <div class="prevTitle">C++primer 5th chapter4</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:xulei_@hotmail.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/rayshaw13" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/example_qr.png" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1"><span class="toc-number">1.</span> <span class="toc-text">5.1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2"><span class="toc-number">2.</span> <span class="toc-text">5.2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3"><span class="toc-number">3.</span> <span class="toc-text">5.3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4"><span class="toc-number">4.</span> <span class="toc-text">5.4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5"><span class="toc-number">5.</span> <span class="toc-text">5.5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-6"><span class="toc-number">6.</span> <span class="toc-text">5.6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-7"><span class="toc-number">7.</span> <span class="toc-text">5.7</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-8"><span class="toc-number">8.</span> <span class="toc-text">5.8</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-9"><span class="toc-number">9.</span> <span class="toc-text">5.9</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-10"><span class="toc-number">10.</span> <span class="toc-text">5.10</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-11"><span class="toc-number">11.</span> <span class="toc-text">5.11</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-12"><span class="toc-number">12.</span> <span class="toc-text">5.12</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-13"><span class="toc-number">13.</span> <span class="toc-text">5.13</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-14"><span class="toc-number">14.</span> <span class="toc-text">5.14</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-15"><span class="toc-number">15.</span> <span class="toc-text">5.15</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-16"><span class="toc-number">16.</span> <span class="toc-text">5.16</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-17"><span class="toc-number">17.</span> <span class="toc-text">5.17</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-18"><span class="toc-number">18.</span> <span class="toc-text">5.18</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-19"><span class="toc-number">19.</span> <span class="toc-text">5.19</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-20"><span class="toc-number">20.</span> <span class="toc-text">5.20</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-21"><span class="toc-number">21.</span> <span class="toc-text">5.21</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-22"><span class="toc-number">22.</span> <span class="toc-text">5.22</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-23"><span class="toc-number">23.</span> <span class="toc-text">5.23</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-24"><span class="toc-number">24.</span> <span class="toc-text">5.24</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-25"><span class="toc-number">25.</span> <span class="toc-text">5.25</span></a></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 6
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/17</span><a class="archive-post-title" href= "/2020/02/17/chapter5/" >C++ primer 5th chapter5练习题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/14</span><a class="archive-post-title" href= "/2020/02/14/chapter4/" >C++primer 5th chapter4</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2020/02/09/chapter3/" >C++primer 5th chapter3 练习题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2020/02/09/chapter2/" >C++primer 5th chapter2 练习题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2020/02/09/c-primer-chapter1-exc/" >C++primer 5th chapter1 练习题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/08</span><a class="archive-post-title" href= "/2020/02/08/hello-world/" >Hello World</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="C++"><span class="iconfont-archer">&#xe606;</span>C++</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "leixu"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+
