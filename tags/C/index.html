@@ -346,15 +346,13 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2021/01/06/%E5%85%B3%E4%BA%8Efread%E7%9A%84r%E5%92%8Crb/" >
+        <a class="abstract-title" href = "/2021/01/06/%E5%85%B3%E4%BA%8Efread%E3%80%81fopen%E7%9A%84r%E5%92%8Crb/" >
             
-                <span>关于fread函数的r和rb选项</span>
+                <span>关于fread/fopen函数的r和rb选项</span>
         </a>
         <div class="abstract-content">
             前段时间在读二进制文件时，发现读不进来。其源代码如下：
-12
-
-
+123456789101112131415if (!(fp = fopen(fname, "r")))	&#123;		COMMENT printf("ERR C0 file open error!\n");		return 0;	&#125;	memset(fh, 0, sizeof(FRAMEHEADER));if (0 == mode)	&#123;		if (1 != fread(fh, sizeof(FRAMEHEADER), 1, fp))		&#123;			COMMENT printf("ERR C1 read fi...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -758,12 +756,12 @@ double或者float
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/06</span><a class="archive-post-title" href= "/2021/01/06/%E5%9B%BE%E5%83%8F%E6%98%BE%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%861/" >图像处理(滤波)</a>
+            <span class="archive-post-date">01/06</span><a class="archive-post-title" href= "/2021/01/06/%E5%85%B3%E4%BA%8Efread%E3%80%81fopen%E7%9A%84r%E5%92%8Crb/" >关于fread/fopen函数的r和rb选项</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">01/06</span><a class="archive-post-title" href= "/2021/01/06/%E5%85%B3%E4%BA%8Efread%E7%9A%84r%E5%92%8Crb/" >关于fread函数的r和rb选项</a>
+            <span class="archive-post-date">01/06</span><a class="archive-post-title" href= "/2021/01/06/%E5%9B%BE%E5%83%8F%E6%98%BE%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%861/" >图像处理(滤波)</a>
         </li>
     
     
