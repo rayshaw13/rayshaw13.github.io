@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>我进的球都是侥幸，打的铁才是人生</title>
+    <title>图像处理(滤波) · 我进的球都是侥幸，打的铁才是人生</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -203,12 +203,23 @@
 <meta name="generator" content="Hexo 4.2.0"></head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >美如画的杂货铺.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">图像处理(滤波)</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>美如画的杂货铺.</a>
 </header>
@@ -220,24 +231,74 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            图像处理(滤波)
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "图像显示与处理">图像显示与处理</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">119</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2021/01/06</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -338,43 +399,57 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/01/06/%E5%9B%BE%E5%83%8F%E6%98%BE%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%861/" >
-            
-                <span>图像处理(滤波)</span>
-        </a>
-        <div class="abstract-content">
-            图像处理-滤波首先是线性滤波：
-将邻域内每个像素与对应的系数相乘，然后将结果进行相加，得到的就是位置(x,y)处的响应。
-邻域大小为m*n，那么需要mn个系数，系数矩阵也称为滤波器、掩膜、核以及模板
-两个概念，相关和卷积。相关是滤波器直接移动，而卷积是将滤波器旋转180°后在进行移动。
+            <main class="main post-page">
+    <article class="article-entry">
+        <h3 id="图像处理-滤波"><a href="#图像处理-滤波" class="headerlink" title="图像处理-滤波"></a>图像处理-滤波</h3><p>首先是线性滤波：</p>
+<p>将邻域内每个像素与对应的系数相乘，然后将结果进行相加，得到的就是位置(x,y)处的响应。</p>
+<p>邻域大小为m*n，那么需要mn个系数，系数矩阵也称为滤波器、掩膜、核以及模板</p>
+<p>两个概念，相关和卷积。相关是滤波器直接移动，而卷积是将滤波器旋转180°后在进行移动。</p>
 
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/06</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "图像显示与处理">图像显示与处理</a>
-    
-</div>
-            
-        </div>
     </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>Author：<a href="http://rayshaw13.github.io">leixu</a>
+            <p>原文链接：<a href="http://rayshaw13.github.io/2021/01/06/%E5%9B%BE%E5%83%8F%E6%98%BE%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%861/">http://rayshaw13.github.io/2021/01/06/%E5%9B%BE%E5%83%8F%E6%98%BE%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%861/</a>
+            <p>发表日期：<a href="http://rayshaw13.github.io/2021/01/06/%E5%9B%BE%E5%83%8F%E6%98%BE%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%861/">January 6th 2021, 8:39:27 pm</a>
+            <p>更新日期：<a href="http://rayshaw13.github.io/2021/01/06/%E5%9B%BE%E5%83%8F%E6%98%BE%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%861/">January 6th 2021, 10:36:34 pm</a>
+            <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2021/01/06/%E5%85%B3%E4%BA%8Efread%E7%9A%84r%E5%92%8Crb/" title= "关于fread函数的r和rb选项">
+                    <div class="nextTitle">关于fread函数的r和rb选项</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2020/02/17/chapter5/" title= "C++ primer 5th chapter5练习题">
+                    <div class="prevTitle">C++ primer 5th chapter5练习题</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -460,6 +535,24 @@
     </div>
     <!-- toc -->
     
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#图像处理-滤波"><span class="toc-number">1.</span> <span class="toc-text">图像处理-滤波</span></a></li></ol>
+    </div>
+    
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
     <ul class="sidebar-tabs sidebar-tabs-active-0">
@@ -470,6 +563,22 @@
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -569,6 +678,25 @@
     
     
     
+    <div class="archive-year"> 2021 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/06</span><a class="archive-post-title" href= "/2021/01/06/%E5%9B%BE%E5%83%8F%E6%98%BE%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%861/" >图像处理(滤波)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/06</span><a class="archive-post-title" href= "/2021/01/06/%E5%85%B3%E4%BA%8Efread%E7%9A%84r%E5%92%8Crb/" >关于fread函数的r和rb选项</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
     
@@ -589,11 +717,6 @@
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2020/02/09/%E5%85%B3%E4%BA%8Efread%E7%9A%84r%E5%92%8Crb/" >关于fread函数的r和rb选项</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2020/02/09/chapter2/" >C++primer 5th chapter2 练习题</a>
         </li>
     
@@ -605,11 +728,6 @@
     
         <li class="archive-post-item">
             <span class="archive-post-date">02/08</span><a class="archive-post-title" href= "/2020/02/08/hello-world/" >Hello World</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/06</span><a class="archive-post-title" href= "/2020/01/06/%E5%9B%BE%E5%83%8F%E6%98%BE%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%861/" >图像处理(滤波)</a>
         </li>
     
     </div>
@@ -686,6 +804,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>
